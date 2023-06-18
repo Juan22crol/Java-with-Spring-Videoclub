@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="shortcut icon" th:href="@{favicon.ico}" type="image/x-icon">
+    <title>PelisHub</title>
+</head>
+<body>
+
+    <!-- MENU DE NAVEGACION -->
+    <nav id='menu'>
+        <input type='checkbox' id='responsive-menu' onclick='updatemenu()'>
+        <ul>
+            <li style="	padding: 5px; float: left;"><img src="imgmenu.png" alt=""></li>
+            <li><form action="/" method="get"><button class="btn">PelisHub</button></form></li>
+            <!-- <li><form action="/gotoMejoresValoradas" method="get"><button class="btn">Mejores Valoradas</button></form></li> -->
+            <li><form action="/gotoNovedades" method="get"><button class="btn">Novedades</button></form></li>
+            <li><form action="/gotoClasicas" method="get"><button class="btn">Clásicas</button></form></li>
+            <li class="boton"><form action="/gotoCrearPelicula" method="get"><button class="btn">Añadir</button><input type="submit" value="+"></form> </li>
+        </ul>
+    </nav>
+
+    <div class="table">
+        <div class="container">     
+            <tr th:each="pelicula : ${lista}">
+                <div class="card">
+                    <img th:src="@{${'images/' + pelicula.titulo + '.png'}}" alt="">
+                    <h3 th:text="${pelicula.titulo}"></h3>
+                    <p th:text="${pelicula.sinopsis}"></p>
+                    <div class="year" th:text="${pelicula.anio}"></div>
+                    <td th:text="${pelicula.puntuacion}"></td>
+                    <td><form action="/borrarPelicula" method="post"><input type="hidden" th:value="${pelicula.id}" name="id"><input class="btnreverse" type="submit" value="Borrar"></form></td>   
+                    <td><form action="/editarPelicula" method="post"><input type="hidden" th:value="${pelicula.id}" name="id"><input class="btnreverse" type="submit" value="Editar"></form></td>   
+                </div>
+            </tr>  
+        </div>  
+    </div>
+    
+</body>
+</html>

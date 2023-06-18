@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="shortcut icon" th:href="@{favicon.ico}" type="image/x-icon">
+    <title>PelisHub</title>
+</head>
+<body>
+
+    <!-- MENU DE NAVEGACION -->
+    <nav id='menu'>
+        <input type='checkbox' id='responsive-menu' onclick='updatemenu()'>
+        <ul>
+            <li style="	padding: 5px; float: left;"><img src="imgmenu.png" alt=""></li>
+            <li><form action="/" method="get"><button class="btn">PelisHub</button></form></li>
+            <!-- <li><form action="/gotoMejoresValoradas" method="get"><button class="btn">Mejores Valoradas</button></form></li> -->
+            <li><form action="/gotoNovedades" method="get"><button class="btn">Novedades</button></form></li>
+            <li><form action="/gotoClasicas" method="get"><button class="btn">Clásicas</button></form></li>
+            <li class="boton"><form action="/gotoCrearPelicula" method="get"><button class="btn">Añadir</button><input type="submit" value="+"></form> </li>
+        </ul>
+    </nav>
+
+    <table>
+        <form action="/crearPelicula" method="post">
+            <p style="color: aliceblue;">Titulo: <input type="text" name="titulo" th:value="${peliculaAEditar.titulo}"></p>
+            <p style="color: aliceblue;">Año:  <input type="number" name="anio" th:value="${peliculaAEditar.anio}"></p>
+            <p style="color: aliceblue;">Sinopsis: <input type="text" name="sinopsis" th:value="${peliculaAEditar.sinopsis}"></p>
+            <p style="color: aliceblue;">Puntuacion: <input type="number" name="puntuacion" th:value="${peliculaAEditar.puntuacion}"></p>
+            <input type="hidden" th:value="${peliculaAEditar.id}" name="id">
+            <p><input type="submit" name="enviar"></p>
+        </form>
+    </table>
+</body>
+</html>

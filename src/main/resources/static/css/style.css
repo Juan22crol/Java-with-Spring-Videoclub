@@ -1,0 +1,215 @@
+body{
+  background-color: black; 
+}
+
+
+/*MENU*/
+#menu {
+	background: #000000;
+	color: #FFF;
+	height: 45px;
+	padding-left: 18px;
+	border-radius: 10px;
+	border: 4px solid #E37100;
+}
+#menu ul, #menu li {
+	margin: 0 auto;
+	padding: 0;
+	list-style: none
+}
+#menu ul {
+	width: 100%;
+}
+#menu li {
+	float: left;
+	display: inline;
+	position: relative;
+}
+#menu a {
+	display: block;
+	line-height: 47px;
+	padding: 0 14px;
+	text-decoration: none;
+	color: #E37100;
+	font-size: 16px;
+}
+#menu a.dropdown-arrow:after {
+	content: "\25BF";
+	margin-left: 5px;
+}
+#menu li a:hover {
+	color: #000000;
+	background: #E37100;
+}
+#menu input {
+	display: none;
+	margin: 0;
+	padding: 0;
+	height: 55px;
+	width: 100%;
+	opacity: 0;
+	cursor: pointer
+}
+#menu label {
+	display: none;
+	line-height: 47px;
+	text-align: center;
+	position: absolute;
+	left: 35px
+}
+#menu label:before {
+	font-size: 1.6em;
+	content: "\2261"; 
+	margin-left: 20px;
+}
+
+@media screen and (max-width: 800px){
+	#menu {position:relative}
+	#menu ul {background:#111;position:absolute;top:100%;right:0;left:0;z-index:3;height:auto;display:none}
+	#menu ul.sub-menus {width:100%;position:static;}
+	#menu ul.sub-menus a {padding-left:30px;}
+	#menu li {display:block;float:none;width:auto;}
+	#menu input, #menu label {position:absolute;top:0;left:0;display:block}
+	#menu input {z-index:4}
+	#menu input:checked + label {color:white}
+	#menu input:checked + label:before {content:"\00d7"}
+	#menu input:checked ~ ul {display:block}
+}
+
+#menu li.boton {
+	float: right;
+	display: inline;
+	position: relative;
+}
+
+
+/*BOTONES MENU*/
+.btn {
+  --color: #E37100;
+  --color2: black;
+  padding: 0.8em 1.75em;
+  background-color: transparent;
+  border: .0px solid var(--color);
+  transition: .5s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  font-size: 16px;
+
+  color: var(--color);
+ }
+ 
+ .btn::after, .btn::before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: skew(90deg) translate(-50%, -50%);
+  position: absolute;
+  inset: 50%;
+  left: 25%;
+  z-index: -1;
+  transition: .5s ease-out;
+  background-color: var(--color);
+ }
+ 
+ .btn::before {
+  top: -50%;
+  left: -25%;
+  transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+ }
+ 
+ .btn:hover::before {
+  transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+ }
+ 
+ .btn:hover::after {
+  transform: skew(45deg) translate(-50%, -50%);
+ }
+ 
+ .btn:hover {
+  color: var(--color2);
+ }
+ 
+ .btn:active {
+  filter: brightness(.7);
+  transform: scale(.98);
+ }
+
+
+/*TARJETAS DE PELICULAS*/
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+  }
+  
+  .card {
+	width: calc(25% - 20px);
+	height: 400px;
+	margin-bottom: 20px;
+	background-color: #E37100;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	overflow: hidden;
+	position: relative;
+	transition: transform 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+	transform: translateY(-10px);
+	box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card img {
+	width: 100%;
+	height: 60%;
+	object-fit: cover;
+  }
+  
+  .card h3 {
+	font-size: 1.5rem;
+	margin: 20px;
+  }
+  
+  .card p {
+	font-size: 1rem;
+	margin: 0 20px;
+  }
+  
+  .year {
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	font-size: 1.2rem;
+	color: black;
+	background-color: #E37100;
+  }
+  
+  .rating {
+	position: absolute;
+	bottom: 10px;
+	left: 20px;
+	font-size: 1.2rem;
+  }
+  
+  .fa-star {
+	color: #e4e5e9;
+	transition: color 0.2s ease-in-out;
+  }
+  
+  .checked {
+	color: #ffc107;
+  }
+  
+  .card:hover .fa-star {
+	color: #ffc107;
+  }
+
+
+/*BOTON REVERSE*/
+
